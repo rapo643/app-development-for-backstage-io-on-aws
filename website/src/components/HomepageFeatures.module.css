@@ -1,7 +1,7 @@
 .features {
   display: flex;
   align-items: center;
-  padding: 3rem 8rem;
+  padding: 3rem 2rem;
   width: 100%;
 }
 
@@ -16,4 +16,10 @@
 }
 .featureRow:nth-child(even) {
   background-color: #eee;
+}
+
+.sectionItem {
+  /* padding: 0 !important; */
+  align-items: stretch;
+  /* margin: 2rem; */
 }

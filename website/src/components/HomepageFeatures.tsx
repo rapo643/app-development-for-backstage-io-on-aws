@@ -2,11 +2,48 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './HomepageFeatures.module.css';
 import { Feature, FeatureItem } from './HomepageFeature';
+import Carousel from 'react-bootstrap/Carousel';
 
 type FeatureGroup = {
   direction: "ltr" | "rtl";
   FeatureItems: FeatureItem[]
 }
+
+const carouselContent = (
+  <div className='carouselTitle'>
+    <h3>Coming Soon</h3>
+  <Carousel data-bs-theme="dark" interval={4200} pause={'hover'} touch={true} title='Coming soon'  >
+  <Carousel.Item>
+    <Carousel.Caption style={{minHeight:'120px'}}>
+      <h4>AWS EKS Provider</h4>
+      <p>Adding support for AWS EKS providers to provision Kubernetes clusters and applications through the OPA on AWS platform</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <Carousel.Caption style={{minHeight:'120px'}}>
+      <h4>AWS ECS - EC2 based Provider</h4>
+      <p> Adding support for AWS ECS - EC2-based clusters. This allows you to specify the capacity and the instance type of your ECS cluster nodes to best support various use cases including: ML workloads, Data analytics, and high compute/memory clusters</p>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <Carousel.Caption style={{minHeight:'120px'}}>
+      <h4>Environment Binding</h4>
+      <p>
+        Adding support to allow binding and connecting environment networks (VPCs) using AWS Transit Gateway for inter-application connectivity
+      </p>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <Carousel.Caption style={{minHeight:'120px'}}>
+      <h4>Use Existing VPC</h4>
+      <p>
+        Adding support for creating environment providers while re-using existing VPCs and subnets
+      </p>
+    </Carousel.Caption>
+  </Carousel.Item>
+</Carousel>
+</div>
+)
 
 const EnterpriseFeatureList: FeatureItem[] = [
   {
@@ -48,10 +85,25 @@ const opaDescription : FeatureItem[] = [
     Svg: require('@site/static/img/regulations.svg').default,
     noSVG:true,
     minHeight:'300px',
-    customTextStyle:{fontSize:'24px', textAlign:'left', maxWidth:'65%', margin:'auto'},
+    customTextStyle:{fontSize:'24px', textAlign:'left', maxWidth:'65%', margin:'auto', minHeight:'275px'},
     description: (
       <>
        <b>Orchestrate Platforms and Applications (OPA) on AWS </b>is an open source reference implementation that ties together AWS services into an enterprise-ready offering. By abstracting AWS services, OPA on AWS allows application developers to focus on what they do best – write application logic! <br/> <br/> Platform engineering teams can promote best practices at-scale, while providing a productive and pleasurable experience for non-cloud developers
+      </>
+    ),
+  },
+]
+
+const opaCarousel : FeatureItem[] = [
+  {
+    title: 'Updates',
+    Svg: require('@site/static/img/regulations.svg').default,
+    noSVG:true,
+    minHeight:'300px',
+    customTextStyle:{fontSize:'24px', maxWidth:'70%', margin:'auto',minHeight:'170px'},
+    description: (
+      <>
+       {carouselContent}
       </>
     ),
   },
@@ -216,10 +268,9 @@ const opaImageList : FeatureItem [] = [
     title: '',
     Svg: require('@site/static/img/dashboard.svg').default,
     noSVG: true,
-    minHeight:'38rem',
     description: (
       <>
-       <span class="imageSubtitle">AWS Software catalog in a click of a button </span> <img width={'100%'} src="img/opa/opa-screenshot11.png"/>
+       <span className="imageSubtitle">AWS Software catalog in a click of a button </span> <img width={'100%'} src="img/opa/opa-screenshot11.png"/>
       </>
     ),
   },
@@ -227,10 +278,9 @@ const opaImageList : FeatureItem [] = [
     title: '',
     Svg: require('@site/static/img/write_code.svg').default,
     noSVG: true,
-    minHeight:'38rem',
     description: (
       <>
-        <span class="imageSubtitle">Scale the use of AWS Services using templates</span> <img width={'100%'} src="img/opa/opa-screenshot22.png"/>
+        <span className="imageSubtitle">Scale the use of AWS Services using templates</span> <img width={'100%'} src="img/opa/opa-screenshot22.png"/>
       </>
     ),
   },
@@ -239,10 +289,9 @@ const opaImageList : FeatureItem [] = [
     title: '',
     Svg: require('@site/static/img/cloud_developer.svg').default,
     noSVG: true,
-    minHeight:'38rem',
     description: (
       <>
-      <span class="imageSubtitle">Manage your applications using a single interface </span> <img width={'100%'} src="img/opa/opa-screenshot33.png"/>
+      <span className="imageSubtitle">Manage your applications using a single interface </span> <img width={'100%'} src="img/opa/opa-screenshot33.png"/>
       </>
     ),
   },
@@ -251,20 +300,27 @@ const opaImageList : FeatureItem [] = [
 const FeatureRowList: FeatureGroup[] = [
   {
     direction: "ltr",
-    FeatureItems: EnterpriseFeatureList,
+    FeatureItems: opaCarousel,
   },
   {
     direction: "ltr",
+    FeatureItems: EnterpriseFeatureList,
+  },
+
+  {
+    direction: "ltr",
     FeatureItems: opaDescription,
+  },
+
+  {
+    direction: "ltr",
+    FeatureItems: opaImageList,
   },
   {
     direction: "ltr",
     FeatureItems: SpeedFeatureList,
   },
-  {
-    direction: "ltr",
-    FeatureItems: opaImageList,
-  },
+
   {
     direction: "ltr",
     FeatureItems: ScaleFeatureList,
@@ -275,7 +331,7 @@ export default function HomepageFeatures(): JSX.Element {
   return (
     <div>
       {FeatureRowList.map((props, idx1) => (
-        <section key={idx1} className={clsx("row", styles.features, styles.featureRow, "sectionItem")}>
+        <section key={idx1} className={clsx("row", styles.features, styles.featureRow, styles.sectionItem)}>
           {props.FeatureItems.map((props, idx2) => (
             <Feature key={idx2} {...props} />
           ))}
