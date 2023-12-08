@@ -3,7 +3,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: example-hpc-devkit-template-from-github
-  title: Test 2 Hpc-devkit Container (SW Template from Github)
+  title: Hpc-devkit Container SW Template from github - Not Working (Work in progress)
   description: Create an ECS cluster with a container running hpc-devkit.
   tags:
     - aws
