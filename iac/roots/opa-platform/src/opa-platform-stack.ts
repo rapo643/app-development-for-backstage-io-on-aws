@@ -177,7 +177,7 @@ export class OPAPlatformStack extends cdk.Stack {
       network: network,
       accessLogBucket: network.logBucket,
       instanceDiskSize: 3000,
-      instanceSize: ec2.InstanceSize.XLARGE,
+      instanceSize: ec2.InstanceSize.LARGE,
       instanceClass: ec2.InstanceClass.C5,
       hostedZone: hostedZone,
       gitlabSecret,
@@ -209,8 +209,8 @@ export class OPAPlatformStack extends cdk.Stack {
       GitlabAmi: { [opaParams.awsRegion]: getEnvVarValue(process.env.GITLAB_RUNNER_AMI) || "ami-0557a15b87f6559cf" },
       gitlabSecret,
       instanceDiskSize: 3000,
-      instanceSize: ec2.InstanceSize.XLARGE,
-      instanceClass: ec2.InstanceClass.C5,
+      instanceSize: ec2.InstanceSize.MICRO,
+      instanceClass: ec2.InstanceClass.T2,
     });
     // wait till gitlab host is done.
     gitlabRunner.node.addDependency(gitlabHostingConstruct);
